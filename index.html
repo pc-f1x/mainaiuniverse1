@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="AI Universe">
+    <meta name="application-name" content="AI Universe">
+    <meta name="theme-color" content="#4f46e5">
+    <meta name="description" content="Discover the best AI tools for everyone in one place. Search, browse, and save your favorite AI tools across multiple categories.">
+    <title>AI Universe</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+    <!-- Add these meta tags for additional protection -->
+    <meta http-equiv="Content-Security-Policy" content="user-select: none">
+    <meta name="robots" content="noindex, nofollow">
+</head>
+<body oncopy="return false" oncut="return false" onselectstart="return false" oncontextmenu="return false">
+    <!-- Name Input Modal -->
+    <div id="name-modal" class="name-modal">
+        <div class="name-modal-content">
+            <h2>Welcome! 👋</h2>
+            <p>Please enter your name to personalize your experience</p>
+            <input type="text" id="name-input" placeholder="Your name" maxlength="20">
+            <button id="name-submit" class="primary-btn">Continue</button>
+        </div>
+    </div>
+    <div id="app" class="app">
+        <header class="app-header">
+            <h1>🤖 AI Universe</h1>
+            <h4>The best AI tools directory.</h4>
+            <div class="search-section">
+                <div class="search-box">
+                    <div class="search-icon">🔍</div>
+                    <input type="text" id="search" placeholder="Search tools...">
+                    <button class="clear-search" id="clear-search">✕</button>
+                </div>
+                <div class="categories-wrapper">
+                    <div class="scroll-fade left"></div>
+                    <div id="category-filter" class="category-filter"></div>
+                    <div class="scroll-fade right"></div>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div id="tools-list" class="tools-grid"></div>
+        </main>
+
+        <nav id="bottom-nav" class="bottom-nav">
+            <div class="nav-left">
+                <button class="nav-btn" onclick="showFavorites()">
+                    <span class="btn-icon">⭐</span>
+                    <span>Favorites</span>
+                </button>
+                <button class="nav-btn" onclick="showDisclaimer()">
+                    <span class="btn-icon">ⓘ</span>
+                    <span>Disclaimer</span>
+                </button>
+                <div id="welcome-banner" class="welcome-banner-footer"></div>
+            </div>
+        </nav>
+
+        <!-- Favorites Modal -->
+        <div id="favorites-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>⭐ My Favorites</h3>
+                    <button onclick="closeFavoritesModal()" class="icon-btn">✕</button>
+                </div>
+                <div class="favorites-container" id="favorites-container">
+                    <!-- Favorites will be populated here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Disclaimer Modal -->
+        <div id="disclaimer-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Disclaimer</h3>
+                    <button onclick="closeDisclaimer()" class="icon-btn">✕</button>
+                </div>
+                <div class="disclaimer-container">
+                    <div class="disclaimer-content">
+                        <p>AI Universe is an independent application that provides a curated list of artificial intelligence tools available worldwide. This app is not affiliated with, endorsed by, or sponsored by any of the AI tools, companies, or websites listed within it. All trademarks, logos, and brand names belong to their respective owners.</p>
+                        <br>
+                        <p>The information provided in this app is for general informational purposes only. While we strive to ensure accuracy, we do not guarantee the completeness, reliability, or availability of any tool or service listed. Users should verify details directly from the official sources before making any decisions.</p>
+                        <br>
+                        <p>Additionally, AI Universe does not modify or interfere with the original functionality of the listed websites. External links open within the app or in the user's preferred browser at their discretion. We are not responsible for the content, policies, or security of third-party websites.</p>
+                        <br>
+                        <p>By using this app, you acknowledge and agree that AI Universe is not liable for any direct or indirect issues arising from the use of the listed tools.</p>
+                        <br>
+                        <p>For any concerns regarding trademarks or content, please contact us, and we will address them promptly.</p>
+                        <br>
+                        <p><a href="mailto:israel.shalum@proton.me">Mail us</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Register Service Worker for PWA functionality
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('Service Worker registered with scope:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.error('Service Worker registration failed:', error);
+                    });
+            });
+        }
+
+        // Handle PWA installation event
+        let deferredPrompt;
+        
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent the mini-infobar from appearing on mobile
+            e.preventDefault();
+            // Store the event so it can be triggered later
+            deferredPrompt = e;
+            // Show your own install button or UI element if you want
+        });
+    </script>
+</body>
+</html>

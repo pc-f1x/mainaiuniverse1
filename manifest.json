@@ -1,0 +1,103 @@
+{
+  "name": "AI Universe",
+  "short_name": "AI Universe",
+  "description": "Discover the best AI tools for everyone in one place. Search, browse, and save your favorite AI tools across multiple categories.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#4f46e5",
+  "orientation": "portrait",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["productivity", "tools", "utilities", "ai"],
+  "screenshots": [
+    {
+      "src": "screenshots/screenshot1.png",
+      "type": "image/png",
+      "sizes": "1280x720",
+      "platform": "wide",
+      "label": "Home screen of AI Universe"
+    },
+    {
+      "src": "screenshots/screenshot2.png",
+      "type": "image/png",
+      "sizes": "1280x720",
+      "platform": "wide",
+      "label": "Category view in AI Universe"
+    },
+    {
+      "src": "screenshots/screenshot3.png",
+      "type": "image/png",
+      "sizes": "750x1334",
+      "platform": "narrow",
+      "label": "Mobile view of AI Universe"
+    }
+  ],
+  "icons": [
+    {
+      "src": "icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-192x192-maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/icon-512x512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Favorites",
+      "short_name": "Favorites",
+      "description": "View your favorite AI tools",
+      "url": "/index.html?view=favorites",
+      "icons": [
+        {
+          "src": "icons/favorite-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "iarc_rating_id": "",
+  "handle_links": "preferred",
+  "launch_handler": {
+    "client_mode": "auto"
+  },
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "scope": "/",
+  "id": "ai-universe",
+  "permissions": [
+    "notifications",
+    "geolocation"
+  ],
+  "display_override": [
+    "window-controls-overlay",
+    "standalone",
+    "minimal-ui"
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "web+aitools",
+      "url": "/index.html?tool=%s"
+    }
+  ]
+} 
